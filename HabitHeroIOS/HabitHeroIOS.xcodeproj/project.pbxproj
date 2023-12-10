@@ -13,6 +13,9 @@
 		F8E055DD2B25624300CDC834 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8E055DC2B25624300CDC834 /* Preview Assets.xcassets */; };
 		F8E055DF2B25624300CDC834 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E055DE2B25624300CDC834 /* Persistence.swift */; };
 		F8E055E22B25624300CDC834 /* HabitHeroIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8E055E02B25624300CDC834 /* HabitHeroIOS.xcdatamodeld */; };
+		F8E055E92B2562FE00CDC834 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E055E82B2562FE00CDC834 /* SignUpView.swift */; };
+		F8E055EB2B25641600CDC834 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E055EA2B25641600CDC834 /* SignInView.swift */; };
+		F8E055ED2B25651100CDC834 /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E055EC2B25651100CDC834 /* UsernameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		F8E055DC2B25624300CDC834 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F8E055DE2B25624300CDC834 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F8E055E12B25624300CDC834 /* HabitHeroIOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitHeroIOS.xcdatamodel; sourceTree = "<group>"; };
+		F8E055E82B2562FE00CDC834 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		F8E055EA2B25641600CDC834 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		F8E055EC2B25651100CDC834 /* UsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				F8E055DE2B25624300CDC834 /* Persistence.swift */,
 				F8E055E02B25624300CDC834 /* HabitHeroIOS.xcdatamodeld */,
 				F8E055DB2B25624300CDC834 /* Preview Content */,
+				F8E055E82B2562FE00CDC834 /* SignUpView.swift */,
+				F8E055EA2B25641600CDC834 /* SignInView.swift */,
+				F8E055EC2B25651100CDC834 /* UsernameView.swift */,
 			);
 			path = HabitHeroIOS;
 			sourceTree = "<group>";
@@ -143,7 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8E055EB2B25641600CDC834 /* SignInView.swift in Sources */,
+				F8E055ED2B25651100CDC834 /* UsernameView.swift in Sources */,
 				F8E055DF2B25624300CDC834 /* Persistence.swift in Sources */,
+				F8E055E92B2562FE00CDC834 /* SignUpView.swift in Sources */,
 				F8E055D82B25624100CDC834 /* ContentView.swift in Sources */,
 				F8E055E22B25624300CDC834 /* HabitHeroIOS.xcdatamodeld in Sources */,
 				F8E055D62B25624100CDC834 /* HabitHeroIOSApp.swift in Sources */,
