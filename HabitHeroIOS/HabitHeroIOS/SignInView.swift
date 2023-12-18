@@ -1,29 +1,28 @@
-//
-//  SignInView.swift
-//  HabitHeroIOS
-//
-//  Created by Noel Rosario on 12/9/23.
-//
-
 import SwiftUI
 
 struct SignInView: View {
-    @State private var email: String = ""
-        @State private var password: String = ""
-        @State private var confirmPassword: String = ""
+    @ObservedObject var userAuth: UserAuth
 
-        var body: some View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var navigateToMainActivityView = false
+    @State private var showSignUpView = false
+    @State private var showErrorAlert = false
+
+    @ObservedObject private var viewModel = AuthenticationViewModel()
+
+
+
+    var body: some View {
+        NavigationStack {
             ZStack {
-                // Background image
-                Image("login_img") // Ensure this is the correct image name
+                Image("login_img")
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.horizontal)
 
-                // Form content
                 VStack {
-                    Spacer() // Pushes the content down
-
+                    Spacer()
 
                     TextField("Email", text: $email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -33,38 +32,58 @@ struct SignInView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
 
-                    SecureField("Confirm Password", text: $confirmPassword)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                   
 
-                    Button("Sign Up") {
-                        // Implement sign-up logic
+                    Button("Sign In") {
+                        viewModel.signInWithEmail(email: email, password: password) { success in
+                            if success {
+                                userAuth.isUserAuthenticated = true
+
+                            } else {
+                                self.showErrorAlert = true
+                            }
+                        }
                     }
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                    .background(Color(red: 0.995, green: 0.744, blue: 0.013))
+                    .cornerRadius(30)
+                    .padding(.bottom)
 
-                    Button("Already have an account?") {
-                        // Implement navigation to sign-in screen
+                    Button("Create an Account") {
+                        self.showSignUpView = true
                     }
                     .foregroundColor(.white)
-                    .padding(.top)
 
-                    Spacer() // Optional, adjusts spacing at the bottom
+                    Spacer()
                 }
                 .padding()
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(10)
                 .padding()
+
+                NavigationLink("", isActive: $navigateToMainActivityView) { MainActivityView(userAuth: userAuth)
+                        .navigationBarBackButtonHidden(true)
+
+                }
+                                    .navigationBarBackButtonHidden(true)
+                NavigationLink("", isActive: $showSignUpView) { SignUpView(userAuth: userAuth) }
+            }
+            .alert(isPresented: $showErrorAlert) {
+                Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
             }
         }
     }
-
+}
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        // Create an instance of UserAuth for the preview
+        let userAuth = UserAuth()
+
+        // Pass the instance to SignInView
+        SignInView(userAuth: userAuth)
     }
 }
+

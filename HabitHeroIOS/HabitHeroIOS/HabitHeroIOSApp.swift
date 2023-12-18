@@ -6,15 +6,33 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+// AppDelegate class for handling traditional UIApplicationDelegate events
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure() // Initialize Firebase
+        return true
+    }
+}
+
+class UserAuth: ObservableObject {
+    @Published var isUserAuthenticated: Bool = false
+}
+
 
 @main
 struct HabitHeroIOSApp: App {
-    let persistenceController = PersistenceController.shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var userAuth = UserAuth()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if userAuth.isUserAuthenticated {
+                MainActivityView(userAuth: userAuth)
+            } else {
+                SignInView(userAuth: userAuth)
+            }
         }
     }
 }
